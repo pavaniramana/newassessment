@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Greet from './component/Greet';
+import Greet1 from './component/Greet1';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+ constructor(props){
+   super(props);
+   this.state={
+    funcComp : false ,
+    classComp : false
+  }
+ }
+
+ render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="heading">Styling using Function and class Component</h1>
+      <button className="btn1" onClick= {()=>{this.setState({funcComp:!this.state.funcComp})}}>To see styling in functional components</button>
+      <button className="btn2" onClick= {()=>{this.setState({classComp:!this.state.classComp})}}>To see styling in class components</button>
+      {this.state.funcComp===true  
+      ?
+      <Greet/>
+      :
+      null}
+      {this.state.classComp===true  
+      ?
+      <Greet1/>
+      :
+      null}
     </div>
   );
+ }
 }
 
 export default App;
+ 
